@@ -9,6 +9,14 @@ Maybe it is useful to someone else.
 
 ## Usage
 
+### Building
+
+```
+git clone https://github.com/theniwo/killingfloor2server
+cd killingfloor2server
+docker build -t theniwo/killingfloor2server:latest .
+```
+
 ### Startup
 
 ```
@@ -60,7 +68,5 @@ This version will _not_ be updated regularly. However, I will try to keep [theni
 [disp@mailbox.org](mailto:disp@mailbox.org)
 
 **LINKS**
-
-[Docker Hub](https://hub.docker.com/repository/docker/theniwo/killingfloor2server)
 
 [Git Hub](https://github.com/theniwo/killingfloor2server)
