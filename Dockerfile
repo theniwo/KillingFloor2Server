@@ -15,19 +15,16 @@ RUN add-apt-repository ppa:wine/wine-builds \
   && apt-get install -y --install-recommends winehq-staging
 
 
+COPY ./content/ /
+
 # STEAM
 USER steam
 
 RUN ./steamcmd.sh +@sSteamCmdForcePlatformType windows +login anonymous +force_install_dir /opt/server/ +app_update 232130 validate +quit
 
-# Do not change above here
-
-USER root
-COPY ./content/ /
-USER steam
-
 RUN sed -i s/bEnabled=false/bEnabled=true/ /opt/server/KFGame/Config/KFWeb.ini
 #RUN rm /opt/server/KFGame/Config/KFWeb.ini
 
 ENV WINEDEBUG "fixme-all"
-CMD /usr/bin/unbuffer wine /opt/server/Binaries/Win64/KFServer.exe kf-bioticslab?difficulty=0?maxplayers=20?adminpassword=SmackMyBitchUp2020 -port=7777
+#CMD /usr/bin/unbuffer wine /opt/server/Binaries/Win64/KFServer.exe kf-bioticslab?difficulty=0?maxplayers=20?adminpassword=SmackMyBitchUp2020 -port=7777
+CMD /usr/bin/unbuffer wine /opt/server/Binaries/Win64/KFServer.exe kf-bioticslab -port=7777

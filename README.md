@@ -4,9 +4,6 @@
 Since Killing Floor 2 was free on the Epic Games Store, we wanted to X-Play on our own server. So I built this.
 Maybe it is useful to someone else.
 
-Since Killing Floor 2 was free on the Epic Games Store, we wanted to X-Play on our own server. So I built this.
-Maybe it is useful to someone else.
-
 ## Usage
 
 ### Building
@@ -61,7 +58,11 @@ docker logs -f killingfloor2server
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/1200px-Infobox_info_icon.svg.png" alt="drawing" width="20">
 
-This version will _not_ be updated regularly. However, I will try to keep [theniwo/steamcmd](https://hub.docker.com/repository/docker/theniwo/steamcmd) updated.
+This version will _not_ be updated regularly.
+However, I will try to keep [theniwo/steamcmd](https://hub.docker.com/repository/docker/theniwo/steamcmd) updated.
+
+**TODO**
+- [ ] Build with own steamcmd
 
 **CONTACT**
 
