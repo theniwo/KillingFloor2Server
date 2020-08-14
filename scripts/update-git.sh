@@ -1,12 +1,17 @@
 #!/usr/bin/env bash
 
-FRIENDLYNAME=Gobuntu
-CONTAINERNAME=gobuntu
-DOCKERREPO=theniwo
-DOCKERIMAGE=gobuntu
-DOCKERTAG=latest
+SOURCE="${BASH_SOURCE[0]}"
+  while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
+    DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
+    SOURCE="$(readlink "$SOURCE")"
+    [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE" # if $SOURCE was a relative symlink, we need to resolve it relative to the path wher>
+  done
+DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
 
-cd /root/Settings/Linux/scripts/docker/$CONTAINERNAME
+source $DIR/env
+
+cd $DIR/..
+
 function main(){
 	logger -i -t $CONTAINERNAME "Adding files"
 	git add .

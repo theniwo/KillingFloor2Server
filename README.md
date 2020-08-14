@@ -7,21 +7,41 @@ Maybe it is useful to someone else.
 ## Usage
 
 ### Building
+Unfortunately the image gets too big for the docker hub, so you have to build it your own:
 
 ```
 git clone https://github.com/theniwo/killingfloor2server
 cd killingfloor2server
 docker build -t theniwo/killingfloor2server:latest .
 ```
+### Webinterface
+To enable the servers webinterface, do the following:
+
+- Open the file `/var/lib/docker/volumes/killingfloor2server_data/_data/KFWeb.ini` file in the docker volume with a text editor of yo>
+
+- Change `bEnabled=false` to `bEnabled=true`
+
+Alternatively you can use this one liner to change that entry and check if it has been changed.
+
+```
+sed -i s/bEnabled=false/bEnabled=true/ /var/lib/docker/volumes/killingfloor2server_data/_data/KFWeb.ini
+grep bEnabled= /var/lib/docker/volumes/killingfloor2server_data/_data/KFWeb.ini
+```
+
+- Restart the Container
 
 ### Startup
 
 ```
 docker run -d \
- --name killingfloor2server \
- -p 0.0.0.0:7777:7777/udp \
- -p 8080:8080 \
- theniwo/killingfloor2server:latest
+        --name killingfloor2server \
+        --restart unless-stopped \
+        --label com.centurylinklabs.watchtower.enable=false \
+        -p 0.0.0.0:7777:7777/udp \
+        -p 8080:8080 \
+        -v killingfloor2server_data:/opt/server/KFGame/Config \
+        theniwo/killingfloor2server:latest
+
 ```
 
 
@@ -33,13 +53,6 @@ Forward port 7777 if you want the server to be found from outside of your local 
 Port 8080 is for the webinterface e.g. `http://localhost:8080` or `http://killingfloor2server:8080` and doesn't have to be forwarded,
 unless you want to access the webinterface from the internet, too.
 
-### Webinterface
-- Open the file `/opt/server/KFGame/Config/KFWeb.ini` either by editing the file in the docker volume or inside the container
-(`docker exec -it killingfloor2server bash`)
-
-- Change `bEnabled=false` to `bEnabled=true`
-
-- Restart the Container
 
 ### Status
 
