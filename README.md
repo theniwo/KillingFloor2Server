@@ -15,7 +15,7 @@ cd killingfloor2server
 docker build -t theniwo/killingfloor2server:latest .
 ```
 ### Webinterface
-To enable the servers webinterface, do the following:
+If the webinterface is not already enabled, do the following:
 
 - Open the file `/var/lib/docker/volumes/killingfloor2server_data/_data/KFWeb.ini` file in the docker volume with a text editor of yo>
 
