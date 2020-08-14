@@ -26,5 +26,5 @@ RUN sed -i s/bEnabled=false/bEnabled=true/ /opt/server/KFGame/Config/KFWeb.ini
 #RUN rm /opt/server/KFGame/Config/KFWeb.ini
 
 ENV WINEDEBUG "fixme-all"
-#CMD /usr/bin/unbuffer wine /opt/server/Binaries/Win64/KFServer.exe kf-bioticslab?difficulty=0?maxplayers=20?adminpassword=SmackMyBitchUp2020 -port=7777
+#CMD /usr/bin/unbuffer wine /opt/server/Binaries/Win64/KFServer.exe kf-bioticslab?difficulty=0?maxplayers=20?adminpassword=PASSWORD -port=7777
 CMD /usr/bin/unbuffer wine /opt/server/Binaries/Win64/KFServer.exe kf-bioticslab -port=7777
