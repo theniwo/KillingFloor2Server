@@ -14,10 +14,11 @@ git clone https://github.com/theniwo/killingfloor2server
 cd killingfloor2server
 docker build -t theniwo/killingfloor2server:latest .
 ```
-### Webinterface
-If the webinterface is not already enabled, do the following:
 
-- Open the file `/var/lib/docker/volumes/killingfloor2server_data/_data/KFWeb.ini` file in the docker volume with a text editor of yo>
+### Webinterface
+To enable the servers webinterface, do the following:
+
+- Open the file `/var/lib/docker/volumes/killingfloor2server_data/_data/KFWeb.ini` file in the docker volume with a text editor of your choice
 
 - Change `bEnabled=false` to `bEnabled=true`
 
@@ -30,20 +31,16 @@ grep bEnabled= /var/lib/docker/volumes/killingfloor2server_data/_data/KFWeb.ini
 
 - Restart the Container
 
+
 ### Startup
 
 ```
 docker run -d \
-        --name killingfloor2server \
-        --restart unless-stopped \
-        --label com.centurylinklabs.watchtower.enable=false \
-        -p 0.0.0.0:7777:7777/udp \
-        -p 8080:8080 \
-        -v killingfloor2server_data:/opt/server/KFGame/Config \
-        theniwo/killingfloor2server:latest
-
+ --name killingfloor2server \
+ -p 0.0.0.0:7777:7777/udp \
+ -p 8080:8080 \
+ theniwo/killingfloor2server:latest
 ```
-
 
 ### Setup
 
